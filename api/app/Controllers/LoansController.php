@@ -6,7 +6,7 @@ use App\Dao\LoasnDao;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-final class LoasnController
+final class LoansController
 {
     public function getLoans(Request $request, Response $response, array $args)
     {

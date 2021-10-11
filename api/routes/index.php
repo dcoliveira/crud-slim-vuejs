@@ -2,6 +2,8 @@
 
 use function src\slimConfiguration;
 use App\Controllers\UserController;
+use App\Controllers\CollectionController;
+use App\Controllers\LoansController;
 
 $app = new \Slim\App(slimConfiguration());
 
