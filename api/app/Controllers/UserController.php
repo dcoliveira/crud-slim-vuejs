@@ -20,4 +20,16 @@ final class UserController
 
         return $response;
     }
+    public function insertUsers(Request $request, Response $response, array $args)
+    {
+        
+    }
+    public function updateUsers(Request $request, Response $response, array $args)
+    {
+        
+    }
+    public function deleteUsers(Request $request, Response $response, array $args)
+    {
+        
+    }
 }
