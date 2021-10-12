@@ -1,3 +1,5 @@
 api/vendor/
 api/composer.lock
 api/env.php
+
+front/node_modules
