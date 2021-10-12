@@ -17,7 +17,7 @@ abstract class Conexao
         $pass   = getenv('GERENCIADOR_DE_ACERVOS_PASSWORD');
         $port   = getenv('GERENCIADOR_DE_ACERVOS_PORT');
 
-        $dsn = "mysql:host={$host};dbname={$dbname};port={$port}";
+        $dsn = "mysql:host={$host};dbname={$dbname};port={$port};charset=utf8";
 
         $this->pdo = new \PDO($dsn, $user, $pass);
         $this->pdo->setAttribute(
