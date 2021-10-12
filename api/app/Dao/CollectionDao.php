@@ -70,9 +70,9 @@ class CollectionDao extends Conexao
     } 
     public function delete(int $id): void
     {
-        $user = $this->pdo
+        $collection = $this->pdo
             ->prepare('DELETE FROM collection WHERE id = :id');
-        $user->execute([
+        $collection->execute([
             'id' => $id
         ]);
     }          
