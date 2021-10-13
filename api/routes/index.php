@@ -7,6 +7,9 @@ use App\Controllers\LoansController;
 
 $app = new \Slim\App(slimConfiguration());
 
+$app->post('/login', AuthController::class . ':login');
+
+
 /**
  * Rotas para crud usuários
  */
