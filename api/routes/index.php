@@ -9,6 +9,15 @@ $app = new \Slim\App(slimConfiguration());
 
 $app->post('/login', AuthController::class . ':login');
 
+$app->get('/refresh-token', AuthController::class . ':refreshToken');
+
+/**
+ * Preparação de acrupamento para rotas autenticadas 
+ */
+$app->group('', function() use ($app) {
+    //$app->get('/user', UserController::class . ':getUsers');
+});
+
 
 /**
  * Rotas para crud usuários
