@@ -31,15 +31,8 @@ export default {
     },
     methods: {
         getStats(){
-            axios.get(`${baseApiUrl}/user`,{crossDomain: false})
-            .then((res) => {
-                this.stat = res.data.users
-                console.log(res.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            
+            axios.get(`${baseApiUrl}/user`).then(res => this.stat = res.data)
+            console.log(res.data);
         }
     },
     mounted(){

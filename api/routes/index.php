@@ -18,6 +18,14 @@ $app->group('', function() use ($app) {
     //$app->get('/user', UserController::class . ':getUsers');
 });
 
+$app->add(new Tuupola\Middleware\CorsMiddleware([
+    "origin" => ["http://localhost:8080"],
+    "methods" => ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],    
+    "headers.allow" => ["Origin", "Content-Type", "Authorization", "Accept", "ignoreLoadingBar", "X-Requested-With", "Access-Control-Allow-Origin"],
+    "headers.expose" => [],
+    "credentials" => true,
+    "cache" => 0,        
+]));
 
 /**
  * Rotas para crud usuários
