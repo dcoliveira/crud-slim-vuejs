@@ -67,5 +67,11 @@ final class AuthController
         ]);
         return $response;
     }
+    public function refreshToken(Request $request, Response $response, array $args): Response
+    {
+        $token = $request->getAttribute('jwt');
+        var_dump($token);
+        return $response;
+    }
  
 }
