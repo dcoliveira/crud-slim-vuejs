@@ -8,6 +8,13 @@ import router from './config/router'
 
 Vue.config.productionTip = false
 
+// TEMPORARIO!
+require('axios').defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:8080/'
+/* require('axios').defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded'*/
+//require('axios').defaults.headers.common['Access-Control-Allow-Methods'] = 'GET, PUT, POST, DELETE, OPTIONS'
+//require('axios').defaults.headers.common['Content-Type'] = 'application/json'
+//require('axios').defaults.headers.common['Access-Control-Allow-Credentials'] = 'true'
+
 new Vue({
   store,
   router,
