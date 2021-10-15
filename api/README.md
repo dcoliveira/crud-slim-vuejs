@@ -12,6 +12,5 @@ Os sql contidos são referente a criação de base e tabelas, assim com insert b
 ```
 composer install
 ```
-
 ## Para testar Endpoints
-Use o arquivo insomnia disponível no diretório Docs/insomnia para navegar e testar as rotas. 
+Use o arquivo insomnia disponível no diretório Docs/insomnia para navegar e testar as rotas.

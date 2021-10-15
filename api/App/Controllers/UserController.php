@@ -14,6 +14,8 @@ final class UserController
         
         $users = new UsersDao();
         $resp = $users->index();
+
+        $qtd = count($resp);
         
         $response = $response->withJson([
             "users" => $resp,

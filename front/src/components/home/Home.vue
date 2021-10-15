@@ -4,7 +4,7 @@
          sub="Informações sobre o acervo" />
 
          <div class="stats">
-            <Stat title="Usuários " :value="qtdUser"
+            <Stat title="Usuários " :value="this.qtdUser"
              icon="fa fa-user" color="#3282cd"/> 
             <Stat title="Itens no acervo " :value="qtdCollection"
              icon="fa fa-address-book" color="#3bc480"/> 
@@ -26,26 +26,27 @@ export default {
     components: { PageTitle, Stat },
     data: function(){
         return {
-            qtdUser: {},
-            qtdCollection: {},
-            qtdLoans: {}
+            qtdUser: [],
+            qtdCollection: [],
+            qtdLoans: []
         }
     },
     methods: {
         getStatsUser(){
             axios.get(`${baseApiUrl}/users`).then(res => this.qtdUser = res.data.qtdUser)
+            
         },
-        getStatsCollection(){
+/*         getStatsCollection(){
             axios.get(`${baseApiUrl}/collection`).then(res => this.qtdCollection = res.data.qtdCollection)
         },
         getStatsLoans(){
             axios.get(`${baseApiUrl}/loans`).then(res => this.qtdLoans = res.data.qtdLoans)
-        }            
+        }  */           
     },
     mounted(){
-        this.getStatsUser(),
-        this.getStatsCollection(),
-        this.getStatsLoans()
+        this.getStatsUser()
+/*         this.getStatsCollection(),
+        this.getStatsLoans() */
     }
 
 }

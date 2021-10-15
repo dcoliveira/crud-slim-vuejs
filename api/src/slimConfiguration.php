@@ -2,6 +2,8 @@
 
 namespace src;
 
+use App\Dao\UsersDao;
+
 function slimConfiguration(): \Slim\Container
 {
     /**
@@ -12,5 +14,11 @@ function slimConfiguration(): \Slim\Container
             'displayErrorDetails' => getenv('DISPLAY_ERRORS_DETAILS'),
         ],
     ];
-    return new \Slim\Container($configuration);
+    $container = new \Slim\Container($configuration);
+
+    $container->offsetSet(UsersDao::class, new UsersDao());
+
+    return $container;
+
+    //return new \Slim\Container($configuration);
 }

@@ -14,10 +14,12 @@ final class CollectionController
     {
         
         $collection = new CollectionDao();
-        $collection->index();
+        $resp = $collection->index();
+        $qtd = count($resp);
         
         $response = $response->withJson([
-            "collection" => $collection
+            "collection" =>  $resp,
+            "qtdCollection" => $qtd
         ]);
 
         return $response;

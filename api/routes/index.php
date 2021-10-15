@@ -1,22 +1,25 @@
 <?php
 
 use function src\slimConfiguration;
+use App\Controllers\AuthController;
 use App\Controllers\UserController;
 use App\Controllers\CollectionController;
 use App\Controllers\LoansController;
+
 
 $app = new \Slim\App(slimConfiguration());
 
 $app->post('/login', AuthController::class . ':login');
 
-$app->get('/refresh-token', AuthController::class . ':refreshToken');
+$app->get('/refresh-token', AuthController::class . ':refreshToken'); 
 
 /**
  * Preparação de acrupamento para rotas autenticadas 
  */
-$app->group('', function() use ($app) {
-    //$app->get('/user', UserController::class . ':getUsers');
-});
+/* $app->group('', function() use ($app) {
+    $app->get('/user', UserController::class . ':getUsers');
+}); */
+
 
 $app->add(new Tuupola\Middleware\CorsMiddleware([
     "origin" => ["http://localhost:8080"],
@@ -25,7 +28,8 @@ $app->add(new Tuupola\Middleware\CorsMiddleware([
     "headers.expose" => [],
     "credentials" => true,
     "cache" => 0,        
-]));
+])); 
+
 
 /**
  * Rotas para crud usuários
