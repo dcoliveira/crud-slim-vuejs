@@ -13,10 +13,11 @@ final class UserController
     {
         
         $users = new UsersDao();
-        $users->index();
+        $resp = $users->index();
         
         $response = $response->withJson([
-            "users" => $users
+            "users" => $resp,
+            "qtdUser" => $qtd
         ]);
 
         return $response;

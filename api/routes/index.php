@@ -30,10 +30,10 @@ $app->add(new Tuupola\Middleware\CorsMiddleware([
 /**
  * Rotas para crud usuários
  */
-$app->get('/user', UserController::class . ':getUsers');
-$app->post('/user', UserController::class . ':insertUsers');
-$app->post('/user-update', UserController::class . ':updateUsers');
-$app->delete('/user/{id}', UserController::class . ':deleteUsers');
+$app->get('/users', UserController::class . ':getUsers');
+$app->post('/users', UserController::class . ':insertUsers');
+$app->post('/users-update', UserController::class . ':updateUsers');
+$app->delete('/users/{id}', UserController::class . ':deleteUsers');
 
 /**
  * Rotas para crud acervo

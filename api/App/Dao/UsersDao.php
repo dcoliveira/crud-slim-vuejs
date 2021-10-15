@@ -13,10 +13,11 @@ class UsersDao extends Conexao
     public function index()
     {
         $users = $this->pdo
-                ->query('SELECT * FROM users')
+                ->query('SELECT *
+                    FROM users;')
                 ->fetchAll(\PDO::FETCH_ASSOC);
 
-        return $users;
+        return $users;   
     }
     public function create(UsersModel $users)
     {
