@@ -55,11 +55,14 @@ class LoansDao extends Conexao
                 collection_id   = :collection_id,
                 user_id         = :user_id,
                 devolution_date = :devolution_date
+            WHERE 
+                id = :id
             ;');
         $loan->execute([
             'collection_id'     => $loansModel->getCollection_id(),   
             'user_id'           => $loansModel->getUser_id(),
-            'devolution_date'   => $loansModel->getDevolution_date()
+            'devolution_date'   => $loansModel->getDevolution_date(),
+            'id'                => $loansModel->getId()
         ]);
     }
     public function delete(int $id): void

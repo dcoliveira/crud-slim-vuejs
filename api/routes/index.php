@@ -6,13 +6,33 @@ use App\Controllers\UserController;
 use App\Controllers\CollectionController;
 use App\Controllers\LoansController;
 
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App(slimConfiguration());
+
+$app->get('/', function () {
+    echo 'API em funcionamento ';
+});
 
 $app->post('/login', AuthController::class . ':login');
 
 $app->get('/refresh-token', AuthController::class . ':refreshToken'); 
 
+
+
+/* $app->options('/{routes:.+}', function ($request, $response, $args) {
+    http_response_code(200);
+    //return $response;
+});
+
+$app->add(function ($req, $res, $next) {
+    $response = $next($req, $res);
+    return $response
+            ->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+}); */
 /**
  * Preparação de acrupamento para rotas autenticadas 
  */
@@ -28,7 +48,7 @@ $app->add(new Tuupola\Middleware\CorsMiddleware([
     "headers.expose" => [],
     "credentials" => true,
     "cache" => 0,        
-])); 
+]));  
 
 
 /**
@@ -52,9 +72,12 @@ $app->delete('/collection/{id}', CollectionController::class . ':deleteCollectio
  */
 $app->get('/loans', LoansController::class . ':getLoans');
 $app->post('/loans', LoansController::class . ':insertLoans');
-$app->put('/loans', LoansController::class . ':updateLoans');
-$app->delete('/loans', LoansController::class . ':deleteLoans');
+$app->post('/loans-update', LoansController::class . ':updateLoans');
+$app->delete('/loans/{id}', LoansController::class . ':deleteLoans');
 
-
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
+    $handler = $this->notFoundHandler; // handle using the default Slim page not found handler
+    return $handler($req, $res);
+});
 
 $app->run();

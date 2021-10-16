@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Dao\LoasnDao;
+use App\Dao\LoansDao;
+use App\Models\LoansModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -11,11 +12,14 @@ final class LoansController
     public function getLoans(Request $request, Response $response, array $args): Response
     {
         
-        $loasn = new LoasnDao();
-        $loasn->index();
+        $loasn = new LoansDao();
+        $resp = $loasn->index();
+
+        $qtd = count($resp);
         
         $response = $response->withJson([
-            "loasn" => $loasn
+            "loasn" => $resp,
+            'qtdLoans' => $qtd
         ]);
 
         return $response;
