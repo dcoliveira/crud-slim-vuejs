@@ -31,17 +31,24 @@ final class LoansController
         $loansDao  = new LoansDao();
         $loans     = new LoansModel();
 
-        $loans->setCollection_id($dados['collection_id']);
-        $loans->setUser_id($dados['user_id']);
-        $loans->setCreated_at($dados['created_at']);
-   
-        $loansDao->create($loans);
+        $existe = $loansDao->show($dados['collection_id']);
 
+        if($existe){
+            $msg = 'ATENÇÃO - Item não pode ser emprestado. Item já se encontra fora do acervo';
+        }else{
+            $loans->setCollection_id($dados['collection_id']);
+            $loans->setUser_id($dados['user_id']);
+            $loans->setCreated_at($dados['created_at']);
+            $loansDao->create($loans);
+
+            $msg = 'Item de acervo emprestado com sucesso';
+        }
+   
         $response = $response->withJson([
-            "loasn" => 'Item de acervo emprestado com sucesso'
+            "loasn" =>  $msg
         ]);
 
-        return $response;        
+        return $response;
         
     }
     public function updateLoans(Request $request, Response $response, array $args): Response

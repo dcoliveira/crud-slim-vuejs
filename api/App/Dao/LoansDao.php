@@ -72,6 +72,18 @@ class LoansDao extends Conexao
         $loan->execute([
             'id' => $id
         ]);
-    }    
+    }
+    public function show($collection_id)
+    {
+ 
+        $loan = $this->pdo
+            ->query("SELECT * FROM loans
+                WHERE collection_id = $collection_id 
+                AND ISNULL(devolution_date);")
+            ->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $loan;             
+    
+    }       
     
 }
