@@ -28,7 +28,7 @@ final class UserController
     {
 
         $dados = (array)$request->getParsedBody();
-             
+        
         $usersDao = new UsersDao();
         $user     = new UsersModel();
         

@@ -1,6 +1,4 @@
-
 <?php
-
 namespace src;
 
 use Tuupola\Middleware\JwtAuthentication;

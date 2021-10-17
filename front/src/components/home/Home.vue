@@ -34,19 +34,18 @@ export default {
     methods: {
         getStatsUser(){
             axios.get(`${baseApiUrl}/users`).then(res => this.qtdUser = res.data.qtdUser)
-            
         },
-/*         getStatsCollection(){
+        getStatsCollection(){
             axios.get(`${baseApiUrl}/collection`).then(res => this.qtdCollection = res.data.qtdCollection)
         },
         getStatsLoans(){
             axios.get(`${baseApiUrl}/loans`).then(res => this.qtdLoans = res.data.qtdLoans)
-        }  */           
+        }     
     },
     mounted(){
-        this.getStatsUser()
-/*         this.getStatsCollection(),
-        this.getStatsLoans() */
+        this.getStatsUser(),
+        this.getStatsCollection(),
+        this.getStatsLoans()
     }
 
 }
